@@ -18,6 +18,7 @@ class IncomingBook(BaseBook):
         alias="pages",
         default=300,
     )  # Пример использования тонкой настройки полей. Передачи в них метаинформации.
+    seller_id: int
 
     @field_validator("year")  # Валидатор, проверяет что дата не слишком древняя
     @staticmethod
@@ -29,6 +30,12 @@ class IncomingBook(BaseBook):
 
 # Класс, валидирующий исходящие данные. Он уже содержит id
 class ReturnedBook(BaseBook):
+    id: int
+    count_pages: int
+    seller_id: int
+
+
+class SellerBook(BaseBook):
     id: int
     count_pages: int
 
